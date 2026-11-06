@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HG72 · Brawl Stars Hall of Fame</title>
+<style>
+:root{--bg:#f4f5fb;--fg:#161a2b;--mu:#5d6480;--card:#fff;--bd:#dfe3f2;--a:#7c3aed;--b:#0690ad;--gold:#c98a00;--ga:rgba(124,58,237,.18);--gb:rgba(6,144,173,.16);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0b14;--fg:#eef0ff;--mu:#9aa0c3;--card:#141629;--bd:#262a48;--a:#9b6bff;--b:#22e1ff;--gold:#ffc83d;--ga:rgba(155,107,255,.28);--gb:rgba(34,225,255,.2);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0b14;--fg:#eef0ff;--mu:#9aa0c3;--card:#141629;--bd:#262a48;--a:#9b6bff;--b:#22e1ff;--gold:#ffc83d;--ga:rgba(155,107,255,.28);--gb:rgba(34,225,255,.2);color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.hero{padding:64px 0 40px;text-align:center;background:radial-gradient(700px 380px at 15% -10%,var(--ga),transparent),radial-gradient(700px 380px at 90% 0,var(--gb),transparent)}
+.tog{position:absolute;right:16px;top:calc(12px + env(safe-area-inset-top,0px));background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:999px;padding:7px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+.tag{display:inline-block;color:var(--mu);border:1px solid var(--bd);border-radius:999px;padding:4px 12px;font-size:.8rem;margin:3px}
+h1{font-size:clamp(2.6rem,9vw,5rem);margin:14px 0 0;letter-spacing:-.03em;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.big{font-size:clamp(2.4rem,8vw,4.4rem);font-weight:800;font-variant-numeric:tabular-nums;color:var(--gold);margin-top:6px}
+.lbl{color:var(--mu);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em}
+.bar{height:12px;border-radius:7px;background:var(--bd);overflow:hidden;max-width:520px;margin:12px auto 4px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width 1.6s ease}
+section{padding:34px 0}h2{font-size:1.5rem;margin:0 0 16px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.st{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;text-align:center}.st b{display:block;font-size:1.9rem;font-variant-numeric:tabular-nums}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;perspective:900px}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;position:relative;transition:transform .15s ease,box-shadow .2s;transform-style:preserve-3d}
+.c:hover{box-shadow:0 10px 30px var(--ga)}.c.g{border-color:var(--gold);box-shadow:0 0 22px rgba(255,200,61,.25)}
+.c .n{font-size:1.1rem;font-weight:700}.c .t{font-size:1.7rem;font-weight:800;color:var(--b);font-variant-numeric:tabular-nums}
+.c .rk{position:absolute;top:10px;right:12px;color:var(--gold);font-weight:800}
+.m{color:var(--mu);font-size:.78rem}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.ctl input{flex:1;min-width:150px;background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:10px;padding:9px 12px;font:inherit}
+.chip{background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:999px;padding:8px 14px;font:inherit;font-size:.85rem;cursor:pointer}.chip.on{background:var(--a);border-color:var(--a);color:#fff}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.tl{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:9px 11px;font-size:.88rem;display:flex;justify-content:space-between;gap:6px}
+.fl{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.fl div{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px}
+footer{text-align:center;color:var(--mu);font-size:.8rem;padding:30px 0 50px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.bar i{transition:none}}
+.sq{display:grid;grid-template-columns:34px 100px 1fr 74px 28px;gap:8px;align-items:center;padding:9px 0;border-bottom:1px solid var(--bd);font-size:.9rem}.sq.me{color:var(--gold);font-weight:700}.sq .bar{margin:0;max-width:none;height:10px}.sq b{text-align:right;font-variant-numeric:tabular-nums}.x{background:none;border:0;color:var(--mu);cursor:pointer;font-size:1rem}
+.sqw{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:6px 16px}
+.sq{grid-template-columns:34px 130px 1fr 74px 28px}.gr{display:inline-block;background:var(--a);color:#fff;border-radius:6px;padding:0 6px;font-size:.72rem;margin-left:4px;font-weight:700}
+.ctl select{background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:10px;padding:9px 12px;font:inherit}.rb{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;align-items:center}.rr{display:grid;grid-template-columns:86px 1fr 32px;gap:8px;align-items:center;margin:7px 0;font-size:.88rem}.rr .bar{margin:0;max-width:none;height:10px}.rr b{text-align:right}
+:root{--c1:#ff4fa3;--c2:#ff9b2e;--c3:#2ee59d}
+#pg{position:fixed;top:0;left:0;height:4px;width:0;z-index:50;background:linear-gradient(90deg,var(--c1),var(--c2),var(--b),var(--a))}
+.hero{position:relative;overflow:hidden}.hero .wrap{position:relative;z-index:1}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;animation:fl 12s ease-in-out infinite}
+.o1{width:300px;height:300px;background:var(--c1);left:-60px;top:-40px}.o2{width:340px;height:340px;background:var(--b);right:-80px;top:20px;animation-delay:-4s}.o3{width:260px;height:260px;background:var(--c2);left:40%;bottom:-130px;animation-delay:-8s}
+@keyframes fl{50%{transform:translate(40px,30px) scale(1.15)}}
+h1{background:linear-gradient(90deg,var(--c1),var(--c2),var(--b),var(--a),var(--c1));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 7s linear infinite;cursor:pointer}
+@keyframes sh{to{background-position:300% 0}}@keyframes sh2{to{background-position:0 0,300% 0}}
+@keyframes pop{from{opacity:0;transform:translateY(26px) scale(.9) rotate(-2deg)}}
+.big{cursor:pointer;transition:transform .2s}.big:hover{transform:scale(1.06)}
+.tag{transition:transform .2s,border-color .2s}.tag:hover{transform:translateY(-3px);border-color:var(--c1)}
+h2{display:inline-block}h2::after{content:"";display:block;height:4px;width:0;border-radius:3px;margin-top:4px;background:linear-gradient(90deg,var(--c1),var(--c2));transition:width .8s .2s}.rv.in h2::after{width:60%}
+.bar i{background:linear-gradient(90deg,var(--a),var(--b),var(--c3))}
+.st{border-top:3px solid var(--a);transition:transform .25s,box-shadow .25s}.st:nth-child(2){border-top-color:var(--c1)}.st:nth-child(3){border-top-color:var(--c2)}.st:nth-child(4){border-top-color:var(--c3)}.st:nth-child(5){border-top-color:var(--b)}.st:hover{transform:translateY(-6px);box-shadow:0 12px 28px var(--ga)}
+.c{overflow:hidden}.c::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.3) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s;pointer-events:none}.c:hover::after{transform:translateX(120%)}
+.c.g{border:2px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(120deg,var(--c1),var(--c2),var(--c3),var(--b),var(--a),var(--c1)) border-box;background-size:auto,300% 100%;background-position:0 0,0 0;animation:sh2 6s linear infinite}
+.rv.in .c,.rv.in .st,.rv.in .fl>div{animation:pop .6s backwards}.rv.in .c.g{animation:pop .6s backwards,sh2 6s linear .6s infinite}
+.fl>div{transition:transform .25s,border-color .25s}.fl>div:hover{transform:translateY(-5px);border-color:var(--c1)}
+.chip{transition:transform .2s,border-color .2s,background .2s}.chip:hover{transform:translateY(-2px);border-color:var(--c1)}.chip.on{background:linear-gradient(90deg,var(--a),var(--c1));border-color:transparent}
+.tl{transition:transform .2s,border-color .2s}.tl:hover{transform:translateY(-3px) scale(1.03);border-color:var(--c2)}
+.sq{transition:background .2s}.sq:hover{background:var(--ga)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+a.chip{text-decoration:none;display:inline-block;margin:2px 4px 2px 0}
+</style>
+</head>
+<body>
+<div id="pg"></div><header class="hero"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+<button class="tog" id="tog">🌓 Theme</button>
+<div class="wrap">
+<span class="tag">#R2VPQCQ28</span><span class="tag">Club: pongal bois</span><span class="tag">Level 182</span><span class="tag">Prestige 59</span>
+<h1>HG72</h1>
+<div class="lbl">Total trophies</div>
+<div class="big" data-to="88754">0</div>
+<div class="bar"><i id="mb"></i></div>
+<div class="m">88.8% of the way to 100,000 trophies · tap the number 🎉</div>
+</div>
+</header>
+<div class="wrap">
+<section class="rv"><h2>The numbers</h2>
+<div class="stats">
+<div class="st"><b data-to="7709">0</b><span class="lbl">Total wins</span></div>
+<div class="st"><b data-to="4099">0</b><span class="lbl">3v3 wins</span></div>
+<div class="st"><b data-to="3107">0</b><span class="lbl">Solo wins</span></div>
+<div class="st"><b data-to="503">0</b><span class="lbl">Duo wins</span></div>
+<div class="st"><b>Mythic I</b><span class="lbl">Ranked, peak 5,973 Elo</span></div>
+</div></section>
+<section class="rv"><h2>🏆 Hall of fame</h2><div class="cards" id="hof"></div></section>
+<section class="rv"><h2>🔥 Flex corner</h2>
+<div class="fl">
+<div><div class="lbl">Longest win streak</div><b style="font-size:1.6rem">38 with Shelly</b><div class="m">Lily 31 and Trunk 27 are close behind</div></div>
+<div><div class="lbl">Prestige 2 club</div><b style="font-size:1.6rem">Griff · Shelly · Edgar · Fang</b><div class="m">Four brawlers past 2,000 trophies</div></div>
+<div><div class="lbl">Best brawler</div><b style="font-size:1.6rem">Griff, 2,358</b><div class="m">Rank 6, power 11</div></div>
+</div></section>
+<section class="rv"><h2>🔎 Brawler explorer</h2>
+<div class="ctl"><input id="q" placeholder="Search a brawler…"><button class="chip on" data-f="all">All</button><button class="chip" data-f="p2">Prestige 2</button><button class="chip" data-f="max">Power 11</button><button class="chip" data-f="s20">Streak 20+</button></div>
+<div class="m" id="cnt" style="margin-bottom:8px"></div><div class="tiles" id="tl"></div>
+<div class="m" style="margin-top:8px">Showing the top 38 brawlers by trophies, out of 88 played.</div></section>
+<section class="rv"><h2>⚔️ Squad leaderboard</h2>
+<div class="ctl"><input id="fn" placeholder="Friend name" maxlength="20"><input id="ft" type="number" inputmode="numeric" placeholder="Their trophies"><button class="chip on" id="add">Add to board</button></div>
+<div class="m" id="sqm" style="margin-bottom:8px"></div><div class="sqw" id="sq"></div>
+<div class="m" style="margin-top:8px">Rating = trophies out of 100,000, with tiers from Rookie up to Mythic (S+ at 100K). Friends you add are saved in this browser only.</div></section>
+<section class="rv"><h2>📊 Account rating</h2>
+<div class="rb"><div><div class="lbl">HG72 overall</div><div class="big" id="ov" style="font-size:3.4rem">0</div><div class="m" id="ovg"></div></div><div id="rows"></div></div>
+<h2 style="margin:26px 0 10px;font-size:1.15rem">Rate a friend</h2>
+<div class="ctl"><input id="rt1" type="number" inputmode="numeric" placeholder="Trophies"><input id="rt2" type="number" inputmode="numeric" placeholder="Total wins"><input id="rt3" type="number" inputmode="numeric" placeholder="Brawlers played"><input id="rt4" type="number" inputmode="numeric" placeholder="Brawlers at power 11"><select id="rt5"><option value="2">Best ranked: Bronze</option><option value="5">Silver</option><option value="8">Gold</option><option value="11">Diamond</option><option value="14">Mythic</option><option value="17">Legendary</option><option value="20">Masters</option><option value="22">Pro</option></select><button class="chip on" id="rate">Rate</button></div>
+<div class="sqw" id="fres" style="display:none;margin-top:6px"></div>
+<div class="m" style="margin-top:8px">Five scores from 0 to 100: trophies out of 100K, wins out of 10K, brawlers played out of 108, share of played brawlers at power 11, and best ranked tier out of 22. Overall is the average. Grades: S 90+, A 80+, B 70+, C 55+, D below.</div></section>
+<section class="rv"><h2>🔍 Find a player</h2>
+<p class="m" style="margin:0 0 10px">Enter any player tag to see live stats and a rating. Your tag is on your in-game profile, under your name.</p>
+<div class="ctl"><input id="pt" placeholder="#TAG, for example R2VPQCQ28" maxlength="14" autocapitalize="characters" autocomplete="off"><button class="chip on" id="go">Look up</button></div>
+<div class="sqw" id="pr" style="display:none;margin-top:6px"></div></section>
+<footer>HG72 · Stats from the Brawl Stars API, 6 Nov 2026</footer>
+</div>
+<script>
+var D=[["Griff",2358,11,6,2,22],["Shelly",2007,11,6,2,38],["Edgar",2000,11,6,2,14],["Fang",2000,11,6,2,13],["Cordelius",1518,11,5,1,23],["Crow",1479,11,5,1,7],["Darryl",1437,11,5,1,12],["Kit",1420,11,5,1,25],["Mico",1406,11,5,1,10],["Pearl",1365,11,5,1,23],["Lily",1365,11,5,1,31],["Surge",1350,11,5,1,10],["Bo",1341,11,5,1,5],["Colette",1341,11,5,1,8],["Bull",1320,11,5,1,4],["Bibi",1305,11,5,1,9],["Clancy",1300,11,5,1,6],["Buzz",1288,11,5,1,6],["Sam",1266,9,5,1,13],["Leon",1228,11,5,1,5],["Jessie",1223,11,5,1,9],["El Primo",1220,11,5,1,6],["Maisie",1162,11,5,1,11],["Spike",1155,11,5,1,11],["Piper",1147,11,5,1,11],["Tara",1139,11,5,1,9],["Rosa",1136,9,5,1,18],["Shade",1125,9,5,1,10],["Nani",1122,11,5,1,8],["Emz",1109,11,5,1,8],["Gale",1085,9,5,1,16],["Brock",1081,11,5,1,19],["Nita",1075,11,5,1,8],["Mortis",1075,11,5,1,6],["Jacky",1074,9,5,1,6],["Kenji",1068,11,5,1,10],["Gus",1063,9,5,1,9],["Kaze",1053,11,5,1,11]];
+var $=function(i){return document.getElementById(i)};
+var f=function(x){return x.toLocaleString("en-US")};
+$("hof").innerHTML=D.slice(0,8).map(function(b,i){return'<div class="c'+(b[4]===2?" g":"")+'"><span class="rk">#'+(i+1)+'</span><div class="m">Rank '+b[3]+' · Prestige '+b[4]+'</div><div class="n">'+b[0]+'</div><div class="t">'+f(b[1])+'</div><div class="m">Power '+b[2]+' · Best streak '+b[5]+'</div></div>'}).join("");
+var flt="all";
+function draw(){var q=$("q").value.toLowerCase();var a=D.filter(function(b){return b[0].toLowerCase().indexOf(q)>-1&&(flt==="all"||(flt==="p2"&&b[4]===2)||(flt==="max"&&b[2]===11)||(flt==="s20"&&b[5]>=20))});$("tl").innerHTML=a.map(function(b){return'<div class="tl"><span>'+b[0]+'</span><b>'+f(b[1])+'</b></div>'}).join("");$("cnt").textContent=a.length+" brawlers"}
+$("q").addEventListener("input",draw);
+document.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){document.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on")});c.classList.add("on");flt=c.dataset.f;draw()})});
+draw();
+$("tog").addEventListener("click",function(){var r=document.documentElement;var dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dark?"light":"dark"});
+function count(el){var to=+el.dataset.to,t0=null;function s(t){if(t0===null)t0=t;var p=Math.min((t-t0)/1600,1);el.textContent=f(Math.round(to*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(s)}requestAnimationFrame(s)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");e.target.querySelectorAll("[data-to]").forEach(count);io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll(".rv").forEach(function(s){io.observe(s)});
+document.querySelectorAll(".hero [data-to]").forEach(count);
+setTimeout(function(){$("mb").style.width="88.75%"},200);
+document.querySelectorAll(".c").forEach(function(c){c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform="rotateY("+x*14+"deg) rotateX("+-y*14+"deg)"});c.addEventListener("pointerleave",function(){c.style.transform=""})});
+var SQ=[{n:"HG72",t:88754,me:1}];
+try{var sv=JSON.parse(localStorage.getItem("hg72sq")||"[]");if(Array.isArray(sv))sv.forEach(function(p){if(p&&typeof p.n==="string"&&p.t>0)SQ.push({n:p.n.slice(0,20),t:+p.t})})}catch(e){}
+function save(){try{localStorage.setItem("hg72sq",JSON.stringify(SQ.filter(function(p){return!p.me})))}catch(e){}}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function rt(t){var s=Math.min(100,Math.round(t/1000)),T=[[100000,"S+","Mythic"],[75000,"S","Legend"],[50000,"A","Elite"],[30000,"B","Expert"],[15000,"C","Skilled"],[5000,"D","Rising"],[0,"E","Rookie"]];for(var i=0;i<T.length;i++)if(t>=T[i][0])return{g:T[i][1],tier:T[i][2],s:s}}
+function sq(){var a=SQ.slice().sort(function(x,y){return y.t-x.t}),mx=a[0].t;$("sq").innerHTML=a.map(function(p,i){return'<div class="sq'+(p.me?" me":"")+'"><span>'+(["🥇","🥈","🥉"][i]||"#"+(i+1))+'</span><span>'+esc(p.n)+' <span class="gr">'+rt(p.t).g+'</span><br><span class="m">'+rt(p.t).tier+' · '+rt(p.t).s+'/100</span></span><div class="bar"><i style="width:'+(p.t/mx*100)+'%"></i></div><b>'+f(p.t)+'</b>'+(p.me?"<span></span>":'<button class="x" data-r="'+SQ.indexOf(p)+'" aria-label="Remove">✕</button>')+'</div>'}).join("");var rk=a.findIndex(function(p){return p.me});$("sqm").textContent=a.length<2?"Add a friend to start the battle.":(rk===0?"HG72 leads the squad by "+f(a[0].t-a[1].t)+" trophies 👑":"HG72 is #"+(rk+1)+" and "+f(a[0].t-SQ[0].t)+" trophies behind "+a[0].n)}
+$("add").addEventListener("click",function(){var n=$("fn").value.trim(),t=+$("ft").value;if(!n||!(t>0&&t<=300000))return;SQ.push({n:n.slice(0,20),t:Math.round(t)});$("fn").value="";$("ft").value="";save();sq()});
+$("sq").addEventListener("click",function(e){var r=e.target.dataset.r;if(r!==undefined){SQ.splice(+r,1);save();sq()}});
+sq();
+function sc(o){var a=[["Trophies",Math.min(100,o.t/1000)],["Wins",Math.min(100,o.w/100)],["Collection",Math.min(100,o.b/108*100)],["Power",o.b?Math.min(100,o.p/o.b*100):0],["Ranked",Math.min(100,o.r/22*100)]].map(function(c){return[c[0],Math.round(c[1])]});var s=Math.round(a.reduce(function(x,c){return x+c[1]},0)/5);return{a:a,s:s,g:s>=90?"S":s>=80?"A":s>=70?"B":s>=55?"C":"D"}}
+function rr(x){return x.a.map(function(c){return'<div class="rr"><span>'+c[0]+'</span><div class="bar"><i style="width:'+c[1]+'%"></i></div><b>'+c[1]+'</b></div>'}).join("")}
+var me=sc({t:88754,w:7709,b:88,p:38,r:15});
+$("ov").textContent=me.s+" / 100";$("ovg").textContent="Grade "+me.g;
+var wk=me.a.slice().sort(function(x,y){return x[1]-y[1]})[0][0];
+$("rows").innerHTML=rr(me)+'<div class="m" style="margin-top:8px">Weakest area: '+wk+'. Getting more brawlers to power 11 is the fastest way up.</div>';
+$("rate").addEventListener("click",function(){var v=["rt1","rt2","rt3","rt4"].map(function(i){return+$(i).value});if(v.some(function(x){return!(x>=0)})||!$("rt1").value||!$("rt3").value)return;var r=sc({t:v[0],w:v[1]||0,b:Math.min(108,v[2]),p:v[3]||0,r:+$("rt5").value});var e=$("fres");e.style.display="block";e.innerHTML='<div style="margin:8px 0"><b style="font-size:1.5rem">'+r.s+' / 100</b> <span class="gr">'+r.g+'</span></div>'+rr(r)});
+window.addEventListener("scroll",function(){var h=document.documentElement;$("pg").style.width=(h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100)+"%"},{passive:true});
+document.querySelectorAll(".c,.st,.fl>div").forEach(function(el){el.style.animationDelay=Array.prototype.indexOf.call(el.parentNode.children,el)*90+"ms"});
+function boom(x,y){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;var E=["🏆","⭐","💥","🎉","✨","🔥"];for(var i=0;i<28;i++){var s=document.createElement("span"),a=Math.random()*6.28,d=80+Math.random()*160;s.textContent=E[i%6];s.style.cssText="position:fixed;left:"+x+"px;top:"+y+"px;font-size:"+(16+Math.random()*16)+"px;pointer-events:none;z-index:60";document.body.appendChild(s);(function(el,dx,dy,rot){el.animate([{transform:"translate(0,0) scale(1)",opacity:1},{transform:"translate("+dx+"px,"+dy+"px) rotate("+rot+"deg) scale(.3)",opacity:0}],{duration:1100,easing:"cubic-bezier(.2,.7,.3,1)"}).onfinish=function(){el.remove()}})(s,Math.cos(a)*d,Math.sin(a)*d+60,Math.random()*540-270)}}
+[".hero .big","h1","#rate","#add"].forEach(function(q){var el=document.querySelector(q);if(el)el.addEventListener("click",function(e){boom(e.clientX,e.clientY)})});
+function look(){var raw=$("pt").value.trim().toUpperCase().replace(/^#/,"").replace(/O/g,"0"),el=$("pr");el.style.display="block";if(!/^[0289PYLQGRJCUV]{3,12}$/.test(raw)){el.innerHTML='<div class="m" style="padding:10px 0">That does not look like a valid tag. Tags only use the characters 0, 2, 8, 9, P, Y, L, Q, G, R, J, C, U and V.</div>';return}el.innerHTML='<div style="padding:10px 0"><b style="font-size:1.2rem">#'+raw+'</b><div class="m" style="margin:4px 0 10px">Open this player on:</div><a class="chip on" target="_blank" rel="noopener" href="https://brawlify.com/player/'+raw+'">Brawlify</a><a class="chip" target="_blank" rel="noopener" href="https://brawlace.com/players/%23'+raw+'">BrawlAce</a></div>'}
+$("go").addEventListener("click",live);$("pt").addEventListener("keydown",function(e){if(e.key==="Enter")live()});
+function live(){var raw=$("pt").value.trim().toUpperCase().replace(/^#/,"").replace(/O/g,"0"),el=$("pr");el.style.display="block";if(!/^[0289PYLQGRJCUV]{3,12}$/.test(raw)){look();return}el.innerHTML='<div class="m" style="padding:10px 0">Loading\u2026</div>';fetch("/api/player?tag="+raw).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(p){var pl=(p.brawlers||[]).filter(function(b){return b.trophies>0}),mx=pl.filter(function(b){return b.power>=11}).length,w=(p["3vs3Victories"]||0)+(p.soloVictories||0)+(p.duoVictories||0),r=sc({t:p.trophies,w:w,b:pl.length,p:mx,r:p.highestAllTimeRankedRank||0}),top=pl.slice().sort(function(a,b){return b.trophies-a.trophies}).slice(0,5);el.innerHTML='<div style="padding:10px 0"><b style="font-size:1.3rem">'+esc(p.name)+'</b> <span class="gr">'+r.g+'</span><div class="m">#'+raw+(p.club?" \u00b7 "+esc(p.club.name):"")+" \u00b7 Level "+p.expLevel+'</div><div class="stats" style="margin:12px 0"><div class="st"><b>'+f(p.trophies)+'</b><span class="lbl">Trophies</span></div><div class="st"><b>'+f(w)+'</b><span class="lbl">Total wins</span></div><div class="st"><b>'+r.s+'</b><span class="lbl">Rating / 100</span></div></div>'+rr(r)+'<div class="m" style="margin:10px 0 4px">Top brawlers</div>'+top.map(function(b){return'<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--bd)"><span>'+esc(b.name)+'</span><b>'+f(b.trophies)+'</b></div>'}).join("")+'</div>'}).catch(function(){look()})}
+</script>
+</body>
+</html>
